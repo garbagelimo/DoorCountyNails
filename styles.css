@@ -1,17 +1,29 @@
+@font-face {
+  font-family: "Runalto";
+  src:
+    url("assets/Runalto.woff") format("woff"),
+    url("assets/Runalto.otf") format("opentype"),
+    url("assets/Runalto.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --color-sand: #ece3d2;
-  --color-cream: #f6f2e9;
-  --color-ink: #3a4336;
-  --color-moss: #76826d;
-  --color-gold: #8a9375;
-  --color-clay: #d8cfbf;
+  --color-sand: #ecd2d8;
+  --color-cream: #fff8fa;
+  --color-ink: #2e272a;
+  --color-moss: #6f7d64;
+  --color-gold: #9b2d31;
+  --color-clay: #f3e3e7;
   --color-white: #ffffff;
-  --ink-rgb: 58 67 54;
-  --moss-rgb: 118 130 109;
-  --accent-rgb: 138 147 117;
-  --font-body: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-display: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-accent: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ink-rgb: 46 39 42;
+  --moss-rgb: 111 125 100;
+  --accent-rgb: 155 45 49;
+  --font-fallback: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-body: "Runalto", var(--font-fallback);
+  --font-display: "Runalto", var(--font-fallback);
+  --font-accent: "Runalto", var(--font-fallback);
   --container: min(1160px, 92vw);
   --radius-soft: 1.5rem;
   --radius-pill: 999px;
@@ -36,8 +48,8 @@ body {
   font-family: var(--font-body);
   color: var(--color-ink);
   background:
-    radial-gradient(circle at 88% 14%, #faf7f0 0%, var(--color-sand) 44%),
-    linear-gradient(180deg, #efe7d8 0%, #f7f2e8 100%);
+    radial-gradient(circle at 88% 14%, #fff8fa 0%, var(--color-sand) 44%),
+    linear-gradient(180deg, #f7e4e9 0%, #fff8fa 100%);
   line-height: 1.6;
 }
 
@@ -75,7 +87,7 @@ a {
   top: 0;
   z-index: 40;
   backdrop-filter: blur(12px);
-  background: rgb(248 242 232 / 0.92);
+  background: rgb(255 248 250 / 0.92);
   border-bottom: 1px solid rgb(var(--ink-rgb) / 0.08);
 }
 
@@ -95,15 +107,20 @@ a {
 }
 
 .brand-mark {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 1px solid var(--color-gold);
+  width: 2.85rem;
+  height: 2.85rem;
+  border: 1px solid rgb(var(--accent-rgb) / 0.36);
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
   color: var(--color-gold);
+  background: rgb(255 248 250 / 0.72);
+}
+
+.brand-mark img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
 }
 
 .brand-text {
@@ -249,7 +266,7 @@ h1 {
   overflow: hidden;
   border-radius: 35% 35% 10% 10% / 18% 18% 14% 14%;
   box-shadow: var(--shadow-soft);
-  background: #d0c2aa;
+  background: #f3e3e7;
 }
 
 .visual-wrap img {
@@ -261,7 +278,7 @@ h1 {
   position: absolute;
   left: -1rem;
   bottom: 12%;
-  background: rgb(249 243 232 / 0.93);
+  background: rgb(255 248 250 / 0.93);
   border: 1px solid rgb(var(--ink-rgb) / 0.15);
   border-radius: var(--radius-pill);
   padding: 0.4rem 0.8rem;
@@ -299,7 +316,7 @@ h2 {
 }
 
 .service-card {
-  background: rgb(249 244 236 / 0.76);
+  background: rgb(255 248 250 / 0.76);
   border: 1px solid rgb(var(--ink-rgb) / 0.11);
   border-radius: var(--radius-soft);
   padding: 1.2rem;
@@ -337,7 +354,7 @@ h2 {
   padding: 1.1rem;
   border: 1px solid rgb(var(--ink-rgb) / 0.14);
   border-radius: var(--radius-soft);
-  background: rgb(255 252 247 / 0.68);
+  background: rgb(255 248 250 / 0.68);
   display: grid;
   gap: 0.75rem;
 }
@@ -452,7 +469,7 @@ h2 {
     flex-direction: column;
     align-items: stretch;
     gap: 0.1rem;
-    background: rgb(248 242 232 / 0.98);
+    background: rgb(255 248 250 / 0.98);
     border-bottom: 1px solid rgb(var(--ink-rgb) / 0.1);
     padding: 0.5rem 4vw 1rem;
   }

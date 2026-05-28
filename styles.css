@@ -23,7 +23,8 @@
   --font-accent: "Noto Serif Display ExtraCondensed", var(--font-fallback);
   --container: min(1160px, 92vw);
   --radius-soft: 1.5rem;
-  --radius-pill: 999px;
+  --radius-button: 0.8rem;
+  --radius-pill: var(--radius-button);
   --shadow-soft: 0 16px 42px rgb(var(--ink-rgb) / 0.14);
 }
 
@@ -152,7 +153,7 @@ a {
   font-family: var(--font-accent);
   display: none;
   border: 1px solid rgb(var(--ink-rgb) / 0.2);
-  border-radius: 0.7rem;
+  border-radius: var(--radius-button);
   background: transparent;
   padding: 0.5rem 0.75rem;
   font: inherit;
@@ -186,6 +187,20 @@ a {
 
 .cta.secondary {
   border-color: rgb(var(--ink-rgb) / 0.22);
+}
+
+.site-header .cta-desktop {
+  background: var(--color-gold);
+  color: var(--color-white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.25rem;
+}
+
+.site-header .cta-desktop:hover,
+.site-header .cta-desktop:focus-visible {
+  background: transparent;
+  color: var(--color-gold);
 }
 
 .cta-mobile {
@@ -441,23 +456,145 @@ h2 {
   max-width: 72ch;
 }
 
-.faq-shell {
+.about-shell {
   max-width: 980px;
 }
 
-.faq-lede {
+.about-copy {
+  border-left: 0.18rem solid rgb(var(--accent-rgb) / 0.32);
+  padding-left: clamp(1.1rem, 3vw, 2rem);
+}
+
+.about-copy p {
+  margin: 0;
+  max-width: 74ch;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.48;
+}
+
+.about-copy p + p {
+  margin-top: 1.15rem;
+}
+
+.about-lede,
+.about-signoff {
+  color: #94505e;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.6vw, 2.45rem) !important;
+  line-height: 1.08 !important;
+}
+
+.about-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+.about-cta-button {
+  width: min(100%, 24rem);
+}
+
+.contact-shell {
+  max-width: 980px;
+}
+
+.contact-copy {
+  color: #94505e;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.6vw, 2.45rem);
+  line-height: 1.12;
+  margin: 0;
+  max-width: 74ch;
+}
+
+.contact-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: clamp(1.6rem, 4vw, 2.6rem);
+  max-width: 980px;
+}
+
+.contact-action {
+  min-height: 4.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(var(--accent-rgb) / 0.24);
+  border-radius: var(--radius-button);
+  background: rgb(255 248 250 / 0.82);
+  color: #94505e;
+  box-shadow: 0 12px 26px rgb(var(--accent-rgb) / 0.08);
+  font-family: var(--font-accent);
+  font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.85rem 1rem;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.contact-action:hover,
+.contact-action:focus-visible {
+  background: rgb(255 248 250 / 0.96);
+  border-color: rgb(var(--accent-rgb) / 0.48);
+  transform: translateY(-1px);
+}
+
+.contact-map {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  max-width: 980px;
+  padding: clamp(0.8rem, 2vw, 1.1rem);
+  border: 1px solid rgb(var(--accent-rgb) / 0.18);
+  border-radius: 1.1rem;
+  background: rgb(255 248 250 / 0.76);
+  box-shadow: 0 18px 38px rgb(var(--accent-rgb) / 0.1);
+}
+
+.contact-map iframe {
+  width: 100%;
+  min-height: clamp(18rem, 44vw, 28rem);
+  border: 0;
+  border-radius: 0.75rem;
+  filter: saturate(0.78) sepia(0.08);
+}
+
+.contact-map-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  max-width: 980px;
+}
+
+.contact-map-button {
+  width: min(100%, 24rem);
+}
+
+.faq-shell,
+.pricing-shell {
+  max-width: 980px;
+}
+
+.faq-lede,
+.pricing-lede {
   margin: 0 0 clamp(1.8rem, 4vw, 3rem);
   max-width: 64ch;
   font-size: clamp(1.2rem, 2vw, 1.45rem);
 }
 
-.faq-list {
+.faq-list,
+.pricing-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  counter-reset: faq;
   display: grid;
   gap: clamp(1.05rem, 2.6vw, 1.7rem);
+}
+
+.faq-list {
+  counter-reset: faq;
 }
 
 .faq-item {
@@ -531,19 +668,7 @@ h2 {
 }
 
 .faq-cta-button {
-  min-width: min(100%, 17rem);
-  padding: 0.95rem 2rem;
-  font-size: 1rem;
-}
-
-.pricing-shell {
-  max-width: 1040px;
-}
-
-.pricing-lede {
-  margin: 0 0 clamp(2rem, 4vw, 3.2rem);
-  max-width: 66ch;
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  width: min(100%, 24rem);
 }
 
 .pricing-section + .pricing-section {
@@ -566,12 +691,7 @@ h2 {
 }
 
 .pricing-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   counter-reset: pricing;
-  display: grid;
-  gap: clamp(1.1rem, 2.7vw, 1.8rem);
 }
 
 .pricing-item {
@@ -695,9 +815,7 @@ h2 {
 }
 
 .pricing-cta-button {
-  min-width: min(100%, 17rem);
-  padding: 0.95rem 2rem;
-  font-size: 1rem;
+  width: min(100%, 24rem);
 }
 
 .reveal {
@@ -760,6 +878,10 @@ h2 {
   .story-grid,
   .visit-grid,
   .footer-visit-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-actions {
     grid-template-columns: minmax(0, 1fr);
   }
 

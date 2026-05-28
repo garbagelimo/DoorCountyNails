@@ -21,6 +21,25 @@ if (yearElement) {
   yearElement.textContent = String(new Date().getFullYear());
 }
 
+const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (heroSlides.length > 1 && !reduceMotion.matches) {
+  let activeSlide = heroSlides.findIndex((slide) => slide.classList.contains('is-active'));
+  activeSlide = activeSlide >= 0 ? activeSlide : 0;
+  heroSlides[activeSlide].classList.add('is-active');
+
+  window.setInterval(() => {
+    const previousSlide = activeSlide;
+    activeSlide = (activeSlide + 1) % heroSlides.length;
+    heroSlides[activeSlide].classList.add('is-active');
+
+    window.setTimeout(() => {
+      heroSlides[previousSlide].classList.remove('is-active');
+    }, 1900);
+  }, 6500);
+}
+
 const revealElements = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window && revealElements.length > 0) {
   const observer = new IntersectionObserver(

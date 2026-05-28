@@ -286,6 +286,31 @@ h1 {
   object-fit: cover;
 }
 
+.hero-slideshow {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.hero-slideshow img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1800ms ease-in-out;
+}
+
+.hero-slide:first-child {
+  position: relative;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
 .floating-chip {
   position: absolute;
   left: -1rem;
@@ -337,6 +362,14 @@ h2 {
   flex-direction: column;
 }
 
+.service-card-action {
+  background: #9b2d31;
+  border-color: #9b2d31;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
 .service-card h3 {
   font-size: 1.55rem;
   margin-bottom: 0.55rem;
@@ -351,6 +384,22 @@ h2 {
   padding-top: 1rem;
   font-weight: 500;
   letter-spacing: 0.04em;
+}
+
+.service-card-action span {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-family: var(--font-accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.service-card-action:hover,
+.service-card-action:focus-visible {
+  background: #7f2528;
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px);
 }
 
 .story-grid {
@@ -400,6 +449,12 @@ h2 {
   border: 1px solid rgb(var(--accent-rgb) / 0.16);
   padding: 1.25rem;
   box-shadow: 0 14px 32px rgb(var(--accent-rgb) / 0.08);
+}
+
+.visit-note {
+  color: #94505e;
+  font-weight: 500;
+  margin-bottom: 0.45rem;
 }
 
 .site-footer {
@@ -602,6 +657,103 @@ h2 {
 
 .contact-map-button {
   width: min(100%, 24rem);
+}
+
+.gallery-shell {
+  max-width: 1120px;
+}
+
+.gallery-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1rem, 4vw, 2rem);
+  align-items: center;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.gallery-lede {
+  color: #94505e;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.6vw, 2.45rem);
+  line-height: 1.08;
+  margin: 0;
+}
+
+.gallery-follow {
+  min-width: min(100%, 18rem);
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.55rem, 1.8vw, 1rem);
+}
+
+.instagram-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border-radius: 0.55rem;
+  background: rgb(255 248 250 / 0.76);
+  box-shadow: 0 14px 32px rgb(var(--accent-rgb) / 0.08);
+  text-decoration: none;
+}
+
+.instagram-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.instagram-tile span {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 0.8rem;
+  background: linear-gradient(180deg, transparent, rgb(var(--ink-rgb) / 0.62));
+  color: var(--color-white);
+  font-family: var(--font-accent);
+  font-size: clamp(0.92rem, 1.5vw, 1.2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(0.45rem);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.instagram-tile:hover img,
+.instagram-tile:focus-visible img {
+  filter: saturate(1.08) contrast(1.02);
+  transform: scale(1.04);
+}
+
+.instagram-tile:hover span,
+.instagram-tile:focus-visible span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.instagram-tile:nth-child(2) img,
+.instagram-tile:nth-child(7) img {
+  object-position: 28% 50%;
+}
+
+.instagram-tile:nth-child(3) img,
+.instagram-tile:nth-child(8) img {
+  object-position: 74% 50%;
+}
+
+.instagram-tile:nth-child(4) img {
+  object-position: 52% 20%;
+}
+
+.instagram-tile:nth-child(6) img {
+  object-position: 48% 78%;
+}
+
+.instagram-tile.featured {
+  border-radius: 35% 35% 10% 10% / 18% 18% 14% 14%;
 }
 
 .faq-shell,
@@ -918,6 +1070,10 @@ h2 {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .gallery-head {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .hero-copy p {
     max-width: none;
   }
@@ -944,6 +1100,10 @@ h2 {
 @media (max-width: 640px) {
   .service-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .instagram-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .header-shell {
@@ -1022,6 +1182,10 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hero-slide {
+    transition: none;
   }
 
   * {

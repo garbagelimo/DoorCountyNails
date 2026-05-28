@@ -457,7 +457,15 @@ h2 {
 }
 
 .about-shell {
-  max-width: 980px;
+  max-width: 1120px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(18rem, 0.72fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.about-content {
+  min-width: 0;
 }
 
 .about-copy {
@@ -492,6 +500,30 @@ h2 {
 
 .about-cta-button {
   width: min(100%, 24rem);
+}
+
+.about-portrait {
+  position: sticky;
+  top: 7rem;
+  isolation: isolate;
+  margin: 0;
+}
+
+.about-portrait::before {
+  content: "";
+  position: absolute;
+  inset: 11% -8% -9% 15%;
+  z-index: -1;
+  background: linear-gradient(45deg, rgb(var(--moss-rgb) / 0.86), rgb(var(--accent-rgb) / 0.68));
+  border-radius: 50% 22% 56% 22%;
+}
+
+.about-portrait img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 66% 50%;
 }
 
 .contact-shell {
@@ -876,6 +908,7 @@ h2 {
 
   .hero-grid,
   .story-grid,
+  .about-shell,
   .visit-grid,
   .footer-visit-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -892,6 +925,14 @@ h2 {
   .hero-visual {
     max-width: 34rem;
     margin-inline: auto;
+  }
+
+  .about-portrait {
+    position: relative;
+    top: auto;
+    max-width: 30rem;
+    margin: 0 auto;
+    order: -1;
   }
 
   .chip-right,

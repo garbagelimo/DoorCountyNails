@@ -449,12 +449,25 @@ h2 {
   border: 1px solid rgb(var(--accent-rgb) / 0.16);
   padding: 1.25rem;
   box-shadow: 0 14px 32px rgb(var(--accent-rgb) / 0.08);
+  display: flex;
+  flex-direction: column;
 }
 
 .visit-note {
   color: #94505e;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   font-weight: 500;
+  line-height: 1.15;
   margin-bottom: 0.45rem;
+}
+
+.visit-card .cta {
+  align-self: center;
+  min-width: min(100%, 20rem);
+  margin-top: auto;
+  padding-block: 0.9rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.14em;
 }
 
 .site-footer {
@@ -1083,12 +1096,21 @@ h2 {
     margin-inline: auto;
   }
 
+  .hero-visual::before {
+    inset: 12% 0 -10% 16%;
+  }
+
   .about-portrait {
     position: relative;
     top: auto;
+    width: min(30rem, 82vw);
     max-width: 30rem;
-    margin: 0 auto;
+    margin: 0 auto clamp(2.8rem, 10vw, 4rem);
     order: -1;
+  }
+
+  .about-portrait::before {
+    inset: 10% 0 -8% 14%;
   }
 
   .chip-right,

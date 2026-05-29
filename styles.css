@@ -80,6 +80,31 @@ a {
   top: 1rem;
 }
 
+.site-banner {
+  position: relative;
+  z-index: 45;
+  background: #9b2d31;
+  color: var(--color-white);
+  border-bottom: 1px solid rgb(var(--ink-rgb) / 0.12);
+  font-family: var(--font-accent);
+  font-size: clamp(0.88rem, 1.6vw, 1.05rem);
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.site-banner .container {
+  padding-block: 0.62rem;
+}
+
+.site-banner a {
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration-color: rgb(255 255 255 / 0.58);
+  text-underline-offset: 0.16em;
+}
+
 .site-header {
   position: sticky;
   top: 0;
